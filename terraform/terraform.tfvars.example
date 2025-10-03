@@ -1,0 +1,46 @@
+# AWS Configuration
+aws_region = "us-east-1"
+
+# Application Configuration
+app_name       = "admin-dashboard-frontend"
+repository_url = "https://github.com/your-username/Admin-Dashboard-frontend"
+
+# GitHub Access Token (required for private repositories)
+# Create a personal access token at: https://github.com/settings/tokens
+# Required scopes: repo (full control of private repositories)
+github_access_token = "ghp_your_github_personal_access_token_here"
+
+# Branch Configuration
+main_branch_name = "main"
+
+# Environment Variables
+# Add any environment variables your Next.js app needs
+environment_variables = {
+  # Example:
+  # NEXT_PUBLIC_API_URL = "https://api.example.com"
+  # NEXT_PUBLIC_ENV     = "production"
+}
+
+# Branch-specific Environment Variables
+branch_environment_variables = {}
+
+# Auto Branch Settings
+enable_auto_branch_creation = false
+enable_branch_auto_build    = true
+enable_branch_auto_deletion = false
+
+# Additional Branches
+create_develop_branch = false
+
+# Custom Domain (optional)
+# Leave empty if you don't want to configure a custom domain
+domain_name      = ""
+subdomain_prefix = "www"
+
+# Tags
+tags = {
+  Environment = "production"
+  ManagedBy   = "terraform"
+  Project     = "admin-dashboard"
+  Team        = "greeninfo-tech"
+}
