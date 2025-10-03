@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Card } from 'antd';
 import { useRouter } from 'next/router';
-import LoginForm from '@/components/auth/LoginForm';
-import SignupForm from '@/components/auth/SignupForm';
-import { useAuth } from '@/contexts/AuthContext';
+import LoginForm from '../../components/auth/LoginForm';
+import SignupForm from '../../components/auth/SignupForm';
+import { useAuth } from '../../contexts/AuthContext';
 
 type AuthView = 'login' | 'signup';
 
