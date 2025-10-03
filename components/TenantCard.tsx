@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card, Statistic, Row, Col, Button, message, Space } from 'antd';
 import { Pie } from '@ant-design/charts';
-import { UserStats, upgradeUserTier } from '@/lib/adminApi';
+import { UserStats, upgradeUserTier } from '../lib/adminApi';
 
 interface TenantCardProps {
   user: UserStats;
