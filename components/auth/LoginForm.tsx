@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, Alert, Typography } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { signIn } from 'aws-amplify/auth';
+import { signIn, signOut } from 'aws-amplify/auth';
 
 const { Title } = Typography;
 
@@ -12,7 +12,22 @@ interface LoginFormProps {
 const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToSignup }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showClearSession, setShowClearSession] = useState(false);
   const [form] = Form.useForm();
+
+  const handleClearSession = async () => {
+    setLoading(true);
+    try {
+      await signOut();
+      setError(null);
+      setShowClearSession(false);
+      form.resetFields();
+    } catch (err: any) {
+      console.error('Error clearing session:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleSubmit = async (values: { email: string; password: string }) => {
     setLoading(true);
@@ -26,6 +41,14 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToSignup }) => {
       // Navigation is handled by AuthContext
     } catch (err: any) {
       console.error('Error signing in:', err);
+      
+      // Handle "already signed in" error by showing clear session option
+      if (err.message?.includes('already a signed in user')) {
+        setError('There is already an active session. Please clear it first.');
+        setShowClearSession(true);
+        setLoading(false);
+        return;
+      }
       
       // Handle specific error messages
       if (err.name === 'UserNotFoundException' || err.name === 'NotAuthorizedException') {
@@ -89,6 +112,17 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToSignup }) => {
         </Form.Item>
 
         <Form.Item>
+          {showClearSession && (
+            <Button
+              danger
+              onClick={handleClearSession}
+              loading={loading}
+              block
+              style={{ marginBottom: 12 }}
+            >
+              Clear Session & Try Again
+            </Button>
+          )}
           <Button
             type="primary"
             htmlType="submit"
