@@ -3,9 +3,9 @@ import { Row, Col, Input, Pagination, Select, Space, Button, Spin } from 'antd';
 import { LogoutOutlined } from '@ant-design/icons';
 import { GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
-import TenantCard from '@/components/TenantCard';
-import { getTenantStats, UserStats } from '@/lib/adminApi';
-import { useAuth } from '@/contexts/AuthContext';
+import TenantCard from '../components/TenantCard';
+import { getTenantStats, UserStats } from '../lib/adminApi';
+import { useAuth } from '../contexts/AuthContext';
 
 const { Option } = Select;
 
