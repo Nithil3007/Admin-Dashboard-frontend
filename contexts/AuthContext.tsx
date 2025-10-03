@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { getCurrentUser, fetchAuthSession, signOut as amplifySignOut, AuthUser } from '@aws-amplify/auth';
-import { Hub } from '@aws-amplify/core';
+import { getCurrentUser, fetchAuthSession, signOut as amplifySignOut, AuthUser } from 'aws-amplify/auth';
+import { Hub } from 'aws-amplify/utils';
 import { useRouter } from 'next/router';
 
 interface AuthContextType {
