@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, Alert, Typography } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { signIn } from '@aws-amplify/auth';
+import { signIn } from 'aws-amplify/auth';
 
 const { Title } = Typography;
 
